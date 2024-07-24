@@ -1,3 +1,10 @@
+<?php
+
+$pdo = new PDO('mysql:host=localhost;dbname=personal_projects', 'root','');
+require_once "../trackmyGaming/includes/queries/track.gallery.php";
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,48 +20,36 @@
     <title>Track My Gaming! &#153</title>
 </head>
 
+<style>
+    img{
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    }
+</style>
+
 <body>
-    <main class="container">
+    <main class="container text-center">
         <section class="text-center my-3">
             <h1>Track My Gaming! &#153</h1>
         </section>
         <section>
-            <div class="row text-center">
-                <div class="col">
-                    <a href="">#</a>
-                    <a href="">A</a>
-                    <a href="">B</a>
-                    <a href="">C</a>
-                    <a href="">D</a>
-                    <a href="">E</a>
-                    <a href="">F</a>
-                    <a href="">G</a>
-                    <a href="">H</a>
-                    <a href="">I</a>
-                    <a href="">J</a>
-                    <a href="">K</a>
-                    <a href="">L</a>
-                    <a href="">M</a>
-                    <a href="">N</a>
-                    <a href="">O</a>
-                    <a href="">P</a>
-                    <a href="">Q</a>
-                    <a href="">R</a>
-                    <a href="">S</a>
-                    <a href="">T</a>
-                    <a href="">U</a>
-                    <a href="">V</a>
-                    <a href="">X</a>
-                    <a href="">W</a>
-                    <a href="">Y</a>
-                    <a href="">Z</a>
-                </div>
-            </div>
+            <?php require_once '../trackmyGaming/includes/components/track.alphabet.php'?>
         </section>
 
         <section>
-
-        </section>
+    <div class="row row-cols-4 gy-4 my-4" id="resultados">
+        <?php foreach ($results as $row): ?>
+            <div class="col""> 
+                <div class="card">
+                    <div class="card-body">
+                        <img src="includes/img/<?=$row['img']?>" width="55%">
+                        <h5 class="my-2"><?= $row['title'] ?></h6>
+                        <h6 class="fw-light"><?= $row['publisher'] ?></h6>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</section>
     </main>
 </body>
 
